@@ -4,7 +4,6 @@ set -e
 echo -n "Enter your validator name: "
 read NODE_MONIKER
 CHAIN_ID=Cardchain
-GENESIS_URL=""
 
 PEERS="9ac1f7c37ccabe74e7d52cb0b7685972bffc63e8@45.136.28.158:26658"
 
@@ -56,7 +55,7 @@ echo "Synchonized."
 
 echo "Creating wallet..."
 Cardchain config keyring-backend test
-(Cardchain keys add validator) 2>&1 | tee 
+(Cardchain keys add validator) 2>&1 | tee
 
 echo "Getting coins from faucet..."
 KEY=$(Cardchain keys show validator --output=json | jq .address -r)
