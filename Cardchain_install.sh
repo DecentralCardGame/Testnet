@@ -55,7 +55,7 @@ echo "Synchonized."
 
 echo "Creating wallet..."
 Cardchain config keyring-backend test
-(Cardchain keys add validator) 2>&1 | tee
+(Cardchain keys add validator) 2>&1 | tee $HOME/.Cardchain/config/validator_mnemonic
 
 echo "Getting coins from faucet..."
 KEY=$(Cardchain keys show validator --output=json | jq .address -r)
