@@ -5,7 +5,7 @@ echo -n "Enter your validator name: "
 read NODE_MONIKER
 CHAIN_ID=Cardchain
 
-PEERS="9ac1f7c37ccabe74e7d52cb0b7685972bffc63e8@45.136.28.158:26658"
+PEERS="a506820ea90c5b0ddb9005ef720a121e9f6bbaeb@45.136.28.158:26658"
 
 echo  "Downloading Binary..."
 curl https://get.ignite.com/DecentralCardGame/Cardchain@latest! | sudo bash
