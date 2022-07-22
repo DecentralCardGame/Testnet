@@ -10,10 +10,13 @@ fi
 
 echo "Stopping/Removing Service"
 sudo systemctl stop Cardchaind
-sudo rm /etc/systemd/system/Cardchaind.service
+sudo rm -rf /etc/systemd/system/Cardchaind.service
 
 echo "Deleting .Cardchain folder"
-sudo rm -r $HOME/.Cardchain/
+sudo rm -rf $HOME/.Cardchain/
 
 echo "Deleting binary"
-sudo rm /usr/local/bin/Cardchain
+sudo rm -rf /usr/local/bin/Cardchain
+
+echo "Deleting repo"
+sudo rm -rf $HOME/Testnet1/
