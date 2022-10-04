@@ -18,7 +18,7 @@ Cardchain config chain-id $CHAIN_ID
 Cardchain init $NODE_MONIKER --chain-id $CHAIN_ID
 
 echo  "Getting Genesis file..."
-cp $HOME/Testnet1/genesis.json $HOME/.Cardchain/config/genesis.json
+cp $HOME/Testnet/genesis.json $HOME/.Cardchain/config/genesis.json
 
 
 echo "Seting persistent peers..."
