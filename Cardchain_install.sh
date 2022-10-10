@@ -8,7 +8,7 @@ CHAIN_ID=Cardchain
 PEERS="56d11635447fa77163f31119945e731c55e256a4@45.136.28.158:26658"
 
 echo  "Downloading Binary..."
-curl https://get.ignite.com/DecentralCardGame/Cardchain@latest! | sudo bash
+curl https://get.ignite.com/DecentralCardGame/Cardchain@v0.81! | sudo bash
 
 echo "Installing jq"
 sudo apt-get install jq
@@ -57,22 +57,4 @@ echo "Creating wallet..."
 Cardchain config keyring-backend test
 (Cardchain keys add validator) 2>&1 | tee $HOME/.Cardchain/config/validator_mnemonic
 
-echo "Getting coins from faucet..."
-KEY=$(Cardchain keys show validator --output=json | jq .address -r)
-curl -X POST https://cardchain.crowdcontrol.network/faucet/ -d "{\"address\": \"$KEY\"}"
-
-sleep 60
-
-echo "Create Validator..."
-Cardchain tx staking create-validator \
-  --from=validator \
-  --amount=1000000ubpf \
-  --moniker=$VAL_NAME \
-  --chain-id=$CHAIN_ID \
-  --commission-rate=0.1 \
-  --commission-max-rate=0.5 \
-  --commission-max-change-rate=0.1 \
-  --min-self-delegation=1 \
-  --pubkey=$(Cardchain tendermint show-validator) \
-  --details="hello world" \
-  --yes
+echo "Please ask in the validator channel in discrod for funds. Afterwards run ./Testnet/Cardchain_create_validator.sh to create your Validator."
