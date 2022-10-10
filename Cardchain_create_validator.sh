@@ -1,5 +1,9 @@
 #!/bin/bash -i
 
+echo -n "Enter your validator name: "
+read NODE_MONIKER
+CHAIN_ID=Testnet3
+
 echo "Create Validator..."
 Cardchain tx staking create-validator \
   --from=validator \
