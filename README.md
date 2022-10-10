@@ -1,4 +1,4 @@
-# Cardchain Testnet2
+# Cardchain Testnet3
 
 
 ## Installation
