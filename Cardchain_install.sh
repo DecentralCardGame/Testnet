@@ -57,4 +57,4 @@ echo "Creating wallet..."
 Cardchain config keyring-backend test
 (Cardchain keys add validator) 2>&1 | tee $HOME/.Cardchain/config/validator_mnemonic
 
-echo "Please fund your wallet. You can do this through voting on cards at https://crowdcontrol.network/. Afterwards run ./Testnet/Cardchain_create_validator.sh to create your Validator."
+echo "Please ask in the validator channel in discrod for funds. Afterwards run ./Testnet/Cardchain_create_validator.sh to create your Validator."
