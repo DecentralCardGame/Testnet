@@ -1,10 +1,6 @@
 #!/bin/bash -i
 set -e
 
-echo -n "Enter your validator name: "
-read NODE_MONIKER
-CHAIN_ID=Cardchain
-
 PEERS="56d11635447fa77163f31119945e731c55e256a4@45.136.28.158:26658"
 
 echo  "Downloading Binary..."
