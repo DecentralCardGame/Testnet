@@ -8,7 +8,11 @@ CHAIN_ID=Cardchain
 PEERS="56d11635447fa77163f31119945e731c55e256a4@45.136.28.158:26658"
 
 echo  "Downloading Binary..."
-curl https://get.ignite.com/DecentralCardGame/Cardchain@v0.81! | sudo bash
+wget https://github.com/DecentralCardGame/Cardchain/releases/download/v0.81/Cardchain_latest_linux_amd64.tar.gz
+tar xzf Cardchain_latest_linux_amd64.tar.gz
+chmod 775 Cardchaind
+sudo mv Cardchaind /usr/local/bin/
+sudo rm Cardchain_latest_linux_amd64.tar.gz
 
 echo "Installing jq"
 sudo apt-get install jq
