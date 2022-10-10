@@ -33,7 +33,7 @@ Description=Cardchain Daemon
 After=network-online.target
 [Service]
 User=$USER
-ExecStart=$(which Cardchain) start
+ExecStart=$(which Cardchaind) start
 Restart=always
 RestartSec=10
 LimitNOFILE=65535
