@@ -8,7 +8,7 @@ CHAIN_ID=Cardchain
 PEERS="752cfbb39a24007f7316725e7bbc34c845e7c5f1@45.136.28.158:26658"
 
 echo  "Downloading Binary..."
-curl https://get.ignite.com/DecentralCardGame/Cardchain@v0.8! | sudo bash
+curl https://get.ignite.com/DecentralCardGame/Cardchain@v0.81! | sudo bash
 
 echo "Installing jq"
 sudo apt-get install jq
