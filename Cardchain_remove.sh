@@ -16,4 +16,4 @@ echo "Deleting .Cardchain folder"
 sudo rm -r $HOME/.Cardchain/
 
 echo "Deleting binary"
-sudo rm /usr/local/bin/Cardchain
+sudo rm /usr/local/bin/Cardchaind
