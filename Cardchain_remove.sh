@@ -9,11 +9,12 @@ then
 fi
 
 echo "Stopping/Removing Service"
-sudo systemctl stop Cardchaind
-sudo rm /etc/systemd/system/Cardchaind.service
+sudo systemctl stop cosmovisor.service
+sudo rm /etc/systemd/system/cosmovisor.service
 
 echo "Deleting .Cardchain folder"
-sudo rm -r $HOME/.Cardchain/
+sudo rm -r $HOME/.cardchain/
 
 echo "Deleting binary"
-sudo rm /usr/local/bin/Cardchaind
+sudo rm /go/bin/cardchaind
+
