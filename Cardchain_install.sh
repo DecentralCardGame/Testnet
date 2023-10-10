@@ -4,15 +4,12 @@ set -e
 echo -n "Enter your validator name: "
 read NODE_MONIKER
 NODE_HOME=~/.cardchain
-CHAIN_ID=Testnet3
+CHAIN_ID=cardtestnet-4
 # CHAIN_REPO_URL='https://github.com/DecentralCardGame/Cardchain'
-CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.81/Cardchain_latest_linux_amd64.tar.gz'
+CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.9.0/Cardchaind'
 CHAIN_BINARY='cardchaind'
-# CHAIN_VERSION='v0.81'
-CHAIN_ID=cardchaind
-# GENESIS_URL=''
 SEEDS=""
-PEERS="56d11635447fa77163f31119945e731c55e256a4@45.136.28.158:26658,72b662370d2296a22cad1eecbe447012dd3c2a89@65.21.151.93:36656,b17b995cf2fcff579a4b4491ca8e05589c2d8627@195.54.41.130:36656,d692726a2bdeb0e371b42ef4fa6dfaa47a1c5ad4@38.242.250.15:26656,f1d8bede57e24cb6e5258da1e4f17b1c5b0a0ca3@173.249.45.161:26656,959f9a742058ff591a5359130a392bcccf5f11a5@5.189.165.127:18656,56ff9898493787bf566c68ede80febb76a45eedc@23.88.77.188:20004,96821b39e381e293a251c860c58a2d9e85435363@49.12.245.142:13656,638240b94ac3da7d8c8df8ae4da72a7d920acf2a@173.212.245.44:26656,b41f7ce40c863ee7e20801e6cd3a97237a79114a@65.21.53.39:16656,5d2bb1fed3f93aed0ba5c96bff4b0afb31d9501d@130.185.119.10:26656"
+PEERS="1ed98c796bcdd0faf5a7ad8793d229e3c7d89543@lxgr.xyz:26656"
 SNAP_RPC="http://lxgr.xyz:26657"
 
 # Install go 1.20.2
@@ -33,12 +30,8 @@ SNAP_RPC="http://lxgr.xyz:26657"
 
 
 echo  "Downloading Binary..."
-wget $CHAIN_BINARY_URL -O $HOME/go/bin/temp.tar.gz
-tar xzf $HOME/go/bin/temp.tar.gz -C $HOME/go/bin/
-mv $HOME/go/bin/Cardchaind $HOME/go/bin/$CHAIN_BINARY
-chmod 770 $HOME/go/bin/$CHAIN_BINARY
-rm $HOME/go/bin/temp.tar.gz
-chmod +x $HOME/go/bin/$CHAIN_BINARY
+wget $CHAIN_BINARY_URL -O $HOME/go/bin/$CHAIN_BINARY
+chmod 775 $HOME/go/bin/$CHAIN_BINARY
 
 export PATH=$PATH:$HOME/go/bin
 
@@ -52,8 +45,7 @@ $CHAIN_BINARY init $NODE_MONIKER --chain-id $CHAIN_ID --home $NODE_HOME
 
 
 echo  "Copy Genesis file..."
-# wget $GENESIS_URL -O $HOME/genesis.json
-mv genesis.json $NODE_HOME/config/genesis.json
+mv Testnet/genesis.json $NODE_HOME/config/genesis.json
 
 
 echo "Seting persistent peers..."
@@ -63,7 +55,7 @@ sed -i -e "/persistent_peers =/ s/= .*/= \"$PEERS\"/"  $NODE_HOME/config/config.
 echo "Setting up cosmovisor..."
 mkdir -p $NODE_HOME/cosmovisor/genesis/bin
 cp $(which $CHAIN_BINARY) $NODE_HOME/cosmovisor/genesis/bin
-chmod +x $NODE_HOME/cosmovisor/genesis/bin/$CHAIN_BINARY
+chmod 775 $NODE_HOME/cosmovisor/genesis/bin/$CHAIN_BINARY
 
 echo "Installing cosmovisor..."
 export BINARY=$NODE_HOME/cosmovisor/genesis/bin/$CHAIN_BINARY
