@@ -7,7 +7,9 @@ NODE_HOME=~/.cardchain
 CHAIN_ID=cardtestnet-4
 # CHAIN_REPO_URL='https://github.com/DecentralCardGame/Cardchain'
 CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.9.0/Cardchaind'
+# CHAIN_VERSION=
 CHAIN_BINARY='cardchaind'
+GENESIS_URL='http://45.136.28.158:3000/genesis.json'
 SEEDS=""
 PEERS="1ed98c796bcdd0faf5a7ad8793d229e3c7d89543@lxgr.xyz:26656"
 SNAP_RPC="http://lxgr.xyz:26657"
@@ -28,7 +30,6 @@ SNAP_RPC="http://lxgr.xyz:26657"
 # git checkout $CHAIN_VERSION
 # make install
 
-
 echo  "Downloading Binary..."
 wget $CHAIN_BINARY_URL -O $HOME/go/bin/$CHAIN_BINARY
 chmod 775 $HOME/go/bin/$CHAIN_BINARY
@@ -43,14 +44,11 @@ rm -rf $NODE_HOME
 $CHAIN_BINARY config chain-id $CHAIN_ID
 $CHAIN_BINARY init $NODE_MONIKER --chain-id $CHAIN_ID --home $NODE_HOME
 
-
 echo  "Copy Genesis file..."
-mv Testnet/genesis.json $NODE_HOME/config/genesis.json
-
+wget $GENESIS_URL -O $NODE_HOME/config/genesis.json
 
 echo "Seting persistent peers..."
 sed -i -e "/persistent_peers =/ s/= .*/= \"$PEERS\"/"  $NODE_HOME/config/config.toml
-
 
 echo "Setting up cosmovisor..."
 mkdir -p $NODE_HOME/cosmovisor/genesis/bin
@@ -84,7 +82,6 @@ echo "Environment='UNSAFE_SKIP_BACKUP=true'" | sudo tee /etc/systemd/system/cosm
 echo ""                                     | sudo tee /etc/systemd/system/cosmovisor.service -a
 echo "[Install]"                            | sudo tee /etc/systemd/system/cosmovisor.service -a
 echo "WantedBy=multi-user.target"           | sudo tee /etc/systemd/system/cosmovisor.service -a
-
 
 echo "Setting up statesync..."
 LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
