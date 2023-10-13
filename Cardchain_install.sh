@@ -6,7 +6,7 @@ read NODE_MONIKER
 NODE_HOME=~/.cardchain
 CHAIN_ID=cardtestnet-4
 # CHAIN_REPO_URL='https://github.com/DecentralCardGame/Cardchain'
-CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.9.0/Cardchaind'
+CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.9.1/Cardchaind'
 # CHAIN_VERSION=
 CHAIN_BINARY='cardchaind'
 GENESIS_URL='http://45.136.28.158:3000/genesis.json'
