@@ -4,15 +4,15 @@ set -e
 echo -n "Enter your validator name: "
 read NODE_MONIKER
 NODE_HOME=~/.cardchain
-CHAIN_ID=cardtestnet-4
+CHAIN_ID=cardtestnet-5
 # CHAIN_REPO_URL='https://github.com/DecentralCardGame/Cardchain'
-CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.9.1/Cardchaind'
+CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.10.0/Cardchaind'
 # CHAIN_VERSION=
 CHAIN_BINARY='cardchaind'
 GENESIS_URL='http://45.136.28.158:3000/genesis.json'
 SEEDS=""
-PEERS="1ed98c796bcdd0faf5a7ad8793d229e3c7d89543@lxgr.xyz:26656"
-SNAP_RPC="http://lxgr.xyz:26657"
+# PEERS="1ed98c796bcdd0faf5a7ad8793d229e3c7d89543@lxgr.xyz:26656"
+# SNAP_RPC="http://lxgr.xyz:26657"
 
 # Install go 1.20.2
 # echo "Installing go..."
@@ -83,17 +83,17 @@ echo ""                                     | sudo tee /etc/systemd/system/cosmo
 echo "[Install]"                            | sudo tee /etc/systemd/system/cosmovisor.service -a
 echo "WantedBy=multi-user.target"           | sudo tee /etc/systemd/system/cosmovisor.service -a
 
-echo "Setting up statesync..."
-LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
-echo $LATEST_HEIGHT
-BLOCK_HEIGHT=$((LATEST_HEIGHT)); \
-TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
-echo -e "\033[0;36mlatest height: $LATEST_HEIGHT \nblock height: $BLOCK_HEIGHT \ntrust hash: $TRUST_HASH \033[0m"
+# echo "Setting up statesync..."
+# LATEST_HEIGHT=$(curl -s $SNAP_RPC/block | jq -r .result.block.header.height)
+# echo $LATEST_HEIGHT
+# BLOCK_HEIGHT=$((LATEST_HEIGHT)); \
+# TRUST_HASH=$(curl -s "$SNAP_RPC/block?height=$BLOCK_HEIGHT" | jq -r .result.block_id.hash)
+# echo -e "\033[0;36mlatest height: $LATEST_HEIGHT \nblock height: $BLOCK_HEIGHT \ntrust hash: $TRUST_HASH \033[0m"
 
-sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
-s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
-s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
-s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $NODE_HOME/config/config.toml; \
+# sed -i.bak -E "s|^(enable[[:space:]]+=[[:space:]]+).*$|\1true| ; \
+# s|^(rpc_servers[[:space:]]+=[[:space:]]+).*$|\1\"$SNAP_RPC,$SNAP_RPC\"| ; \
+# s|^(trust_height[[:space:]]+=[[:space:]]+).*$|\1$BLOCK_HEIGHT| ; \
+# s|^(trust_hash[[:space:]]+=[[:space:]]+).*$|\1\"$TRUST_HASH\"|" $NODE_HOME/config/config.toml; \
 
 echo "Configuring pruning"
 indexer="null"
@@ -121,8 +121,8 @@ done
 
 echo "Synchonized."
 
-echo "Creating wallet..."
-$CHAIN_BINARY config keyring-backend test
-($CHAIN_BINARY keys add validator) 2>&1 | tee $NODE_HOME/config/validator_mnemonic
+# echo "Creating wallet..."
+# $CHAIN_BINARY config keyring-backend test
+# ($CHAIN_BINARY keys add validator) 2>&1 | tee $NODE_HOME/config/validator_mnemonic
 
-echo "Please use the faucet on our website to get some funds. Afterwards run ./Testnet/Cardchain_create_validator.sh to create your Validator."
+echo "Please add the wallet you used in the testnets before or use the faucet on our website to get some funds. Afterwards run ./Testnet/Cardchain_create_validator.sh to create your Validator."
