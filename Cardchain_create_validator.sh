@@ -2,7 +2,7 @@
 
 echo -n "Enter your validator name: "
 read NODE_MONIKER
-CHAIN_ID=cardtestnet-4
+CHAIN_ID=cardtestnet-5
 
 echo "Create Validator..."
 Cardchain tx staking create-validator \
@@ -15,5 +15,5 @@ Cardchain tx staking create-validator \
   --commission-max-change-rate=0.1 \
   --min-self-delegation=1 \
   --pubkey=$(Cardchain tendermint show-validator) \
-  --details="hello world" \
+  --details="" \
   --yes
