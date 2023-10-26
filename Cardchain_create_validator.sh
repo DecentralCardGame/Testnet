@@ -8,7 +8,7 @@ echo "Create Validator..."
 Cardchain tx staking create-validator \
   --from=validator \
   --amount=1000000ubpf \
-  --moniker=$VAL_NAME \
+  --moniker=$NODE_MONIKER \
   --chain-id=$CHAIN_ID \
   --commission-rate=0.1 \
   --commission-max-rate=0.5 \
