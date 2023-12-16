@@ -11,7 +11,7 @@ CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/downlo
 CHAIN_BINARY='cardchaind'
 GENESIS_URL='http://45.136.28.158:3000/genesis.json'
 SEEDS=""
-PEERS="60b6b87672f9f74305216847dec10a4b463828d1@202.61.225.157:26656"
+PEERS="5ed5398d201c0d40400055beceb4a9a93506d26a@202.61.225.157:26656"
 # SNAP_RPC="http://lxgr.xyz:26657"
 
 # Install go 1.21.5
