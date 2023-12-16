@@ -14,10 +14,10 @@ SEEDS=""
 PEERS="60b6b87672f9f74305216847dec10a4b463828d1@202.61.225.157:26656"
 # SNAP_RPC="http://lxgr.xyz:26657"
 
-# Install go 1.20.2
+# Install go 1.21.5
 # echo "Installing go..."
 # wget -q -O - https://git.io/vQhTU | bash -s -- --remove
-# wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.20.2
+# wget -q -O - https://git.io/vQhTU | bash -s -- --version 1.215
 # source $shell_profile
 
 # install from source
