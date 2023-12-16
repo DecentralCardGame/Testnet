@@ -4,14 +4,14 @@ set -e
 echo -n "Enter your validator name: "
 read NODE_MONIKER
 NODE_HOME=~/.cardchain
-CHAIN_ID=cardtestnet-5
+CHAIN_ID=cardtestnet-6
 # CHAIN_REPO_URL='https://github.com/DecentralCardGame/Cardchain'
-CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.10.0/Cardchaind'
+CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.11.0/Cardchaind'
 # CHAIN_VERSION=
 CHAIN_BINARY='cardchaind'
 GENESIS_URL='http://45.136.28.158:3000/genesis.json'
 SEEDS=""
-PEERS="109adfd1645cc1289bd2753277d6c5c2a9112b76@45.136.28.158:26656, 447a7af037dc85213d98ef3f4dc07d05191f52e7@202.61.225.157:26656"
+PEERS="60b6b87672f9f74305216847dec10a4b463828d1@202.61.225.157:26656"
 # SNAP_RPC="http://lxgr.xyz:26657"
 
 # Install go 1.20.2
@@ -53,7 +53,7 @@ sed -i -e "/persistent_peers =/ s/= .*/= \"$PEERS\"/"  $NODE_HOME/config/config.
 echo "Setting up cosmovisor..."
 mkdir -p $NODE_HOME/cosmovisor/genesis/bin
 cp $(which $CHAIN_BINARY) $NODE_HOME/cosmovisor/genesis/bin
-chmod 775 $NODE_HOME/cosmovisor/genesis/bin/$CHAIN_BINARY
+chmod 755 $NODE_HOME/cosmovisor/genesis/bin/$CHAIN_BINARY
 
 echo "Installing cosmovisor..."
 export BINARY=$NODE_HOME/cosmovisor/genesis/bin/$CHAIN_BINARY
