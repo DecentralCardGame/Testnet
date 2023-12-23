@@ -1,4 +1,4 @@
-# Cardchain Testnet 6
+# Cardchain Testnet 7
 
 
 ## Installation
