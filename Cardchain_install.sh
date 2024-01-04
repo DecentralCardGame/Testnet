@@ -41,7 +41,7 @@ sudo apt-get install jq
 
 echo  "Initializing Cardchain..."
 rm -rf $NODE_HOME
-$CHAIN_BINARY config chain-id $CHAIN_ID
+$CHAIN_BINARY config chain-id $CHAIN_ID --home $NODE_HOME
 $CHAIN_BINARY init $NODE_MONIKER --chain-id $CHAIN_ID --home $NODE_HOME
 
 echo  "Copy Genesis file..."
