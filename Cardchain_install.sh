@@ -4,14 +4,14 @@ set -e
 echo -n "Enter your validator name: "
 read NODE_MONIKER
 NODE_HOME=~/.cardchaind
-CHAIN_ID=cardtestnet-9
+CHAIN_ID=cardtestnet-10
 # CHAIN_REPO_URL='https://github.com/DecentralCardGame/Cardchain'
-CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.14.1/Cardchaind'
+CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.14.2/Cardchaind'
 # CHAIN_VERSION=
 CHAIN_BINARY='cardchaind'
 GENESIS_URL='http://45.136.28.158:3000/genesis.json'
 SEEDS=""
-PEERS="2aa407243c982ce2d9ee607b15418cf45b5002f7@202.61.225.157:20056"
+PEERS="ab88b326851e26cf96d1e4634d08ca0b8d812032@202.61.225.157:20056"
 
 # Install go 1.21.5
 # echo "Installing go..."
