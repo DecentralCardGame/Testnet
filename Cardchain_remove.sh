@@ -13,7 +13,7 @@ sudo systemctl stop cosmovisor.service
 sudo rm /etc/systemd/system/cosmovisor.service
 
 echo "Deleting .Cardchain folder"
-sudo rm -r $HOME/.cardchain/
+sudo rm -r $HOME/.cardchaind/
 
 echo "Deleting binary"
 sudo rm /go/bin/cardchaind
