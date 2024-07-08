@@ -9,7 +9,7 @@ CHAIN_ID=cardtestnet-11
 CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.16.0/cardchaind'
 # CHAIN_VERSION=
 CHAIN_BINARY='cardchaind'
-GENESIS_URL='http://45.136.28.158:3000/genesis.json'
+GENESIS_URL='https://cardchain.crowdcontrol.network/files/genesis.json'
 SEEDS=""
 PEERS="86b643ba743ccc78e6e086120d43c96f85872601@202.61.225.157:20056"
 
