@@ -2,7 +2,7 @@
 
 echo -n "Enter your validator name: "
 read NODE_MONIKER
-CHAIN_ID=cardtestnet-11
+CHAIN_ID=cardtestnet-12
 
 echo "Create Validator..."
 cardchaind tx staking create-validator \
