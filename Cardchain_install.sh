@@ -11,7 +11,7 @@ CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/downlo
 CHAIN_BINARY='cardchaind'
 GENESIS_URL='https://cardchain.crowdcontrol.network/files/genesis.json'
 SEEDS=""
-PEERS="77dbc0da2b3f1d066676b316aa9bd97f4926b1ac@152.53.103.89:32056"
+PEERS="1cb10562e90e6546fa7bc69b8bf634270b67a9f7@152.53.103.89:32056"
 
 # Install go 1.21.5
 # echo "Installing go..."
