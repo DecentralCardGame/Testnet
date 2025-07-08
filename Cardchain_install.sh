@@ -57,7 +57,7 @@ chmod 711 $NODE_HOME/cosmovisor/genesis/bin/$CHAIN_BINARY
 echo "Installing cosmovisor..."
 export BINARY=$NODE_HOME/cosmovisor/genesis/bin/$CHAIN_BINARY
 export GO111MODULE=on
-go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@v1.5.0
+go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@latest
 
 #sudo rm /etc/systemd/system/cosmovisor.service
 sudo touch /etc/systemd/system/cosmovisor.service
