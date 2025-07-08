@@ -4,9 +4,9 @@ set -e
 echo -n "Enter your validator name: "
 read NODE_MONIKER
 NODE_HOME=~/.cardchaind
-CHAIN_ID=cardtestnet-13
+CHAIN_ID=cardtestnet-14
 # CHAIN_REPO_URL='https://github.com/DecentralCardGame/Cardchain'
-CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.17.0/cardchaind'
+CHAIN_BINARY_URL='https://github.com/DecentralCardGame/Cardchain/releases/download/v0.18.0/cardchaind'
 # CHAIN_VERSION=
 CHAIN_BINARY='cardchaind'
 GENESIS_URL='https://cardchain.crowdcontrol.network/files/genesis.json'
@@ -57,7 +57,7 @@ chmod 711 $NODE_HOME/cosmovisor/genesis/bin/$CHAIN_BINARY
 echo "Installing cosmovisor..."
 export BINARY=$NODE_HOME/cosmovisor/genesis/bin/$CHAIN_BINARY
 export GO111MODULE=on
-go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@v1.0.0
+go install github.com/cosmos/cosmos-sdk/cosmovisor/cmd/cosmovisor@v1.5.0
 
 #sudo rm /etc/systemd/system/cosmovisor.service
 sudo touch /etc/systemd/system/cosmovisor.service
@@ -68,7 +68,7 @@ echo "After=network-online.target"          | sudo tee /etc/systemd/system/cosmo
 echo ""                                     | sudo tee /etc/systemd/system/cosmovisor.service -a
 echo "[Service]"                            | sudo tee /etc/systemd/system/cosmovisor.service -a
 echo "User=$USER"                            | sudo tee /etc/systemd/system/cosmovisor.service -a
-echo "ExecStart=$HOME/go/bin/cosmovisor start --x-crisis-skip-assert-invariants --home $NODE_HOME" | sudo tee /etc/systemd/system/cosmovisor.service -a
+echo "ExecStart=$HOME/go/bin/cosmovisor run start --home $NODE_HOME" | sudo tee /etc/systemd/system/cosmovisor.service -a
 echo "Restart=always"                       | sudo tee /etc/systemd/system/cosmovisor.service -a
 echo "RestartSec=3"                         | sudo tee /etc/systemd/system/cosmovisor.service -a
 echo "LimitNOFILE=4096"                     | sudo tee /etc/systemd/system/cosmovisor.service -a
